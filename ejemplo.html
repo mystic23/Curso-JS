@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <tittle> Te Amo Jesus</tittle>
+    <script type="text/javascript">
+
+        async function traerPais() {
+
+            const respuesta = await fetch("https://api.nationalize.io/?name=jesus/?");
+
+            if(!respuesta.OK){
+
+                let oops = "404 no encontré nada";
+                alert(oops);
+                throw new Error(oops);
+
+                
+            }
+
+            const nombre = respuesta.json;
+
+            return nombre
+        }
+
+        function mostrarNombre(n) {
+
+            document.getElementById("mensaje").innerHTML = n.country[0].country_id;
+        }
+
+        traerPais().then(mostrarNombre);
+    </script>
+</head>
+
+<body>
+    <h1> Te Amo mucho Jesus</h1>
+    <p> Eres mi cielito lindo </p>
+    <p id="mensaje"> Cargando... </p>
+    <script type="text/javascript">
+        mostrarNombre("<strong>Jesus</strong>");
+
+    </script>
+</body>
+
+</html>
